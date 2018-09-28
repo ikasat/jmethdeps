@@ -21,17 +21,12 @@ allprojects {
     }
 }
 
-mainClassName = 'com.github.ikasat.jmethdeps.cmd.JmethdepsMain'
+mainClassName = 'com.github.ikasat.jmethdeps.cli.JmethdepsMain'
 
 dependencies {
-    // annotationProcessor 'org.projectlombok:lombok:1.16.18'
-    // compile 'com.fasterxml.jackson.core:jackson-databind:2.9.+'
-    // compile 'commons-beanutils:commons-beanutils:1.9.3'
-    // compile 'commons-cli:commons-cli:1.4'
-    // compile 'javax.servlet:javax.servlet-api:4.0.+'
-    // compile 'org.apache.commons:commons-lang3:3.+'
-    // compile 'org.slf4j:slf4j-simple:1.7.+'
-    // compileOnly 'org.projectlombok:lombok:1.16.18'
-    // compileOnly 'org.slf4j:slf4j-api:1.7.+'
+    annotationProcessor 'org.projectlombok:lombok:1.18.2'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.9.7'
+    compile 'commons-cli:commons-cli:1.4'
     compile 'org.apache.bcel:bcel:6.2'
+    compileOnly 'org.projectlombok:lombok:1.18.2'
 }
