@@ -17,19 +17,19 @@ import lombok.Getter;
 import lombok.Setter;
 
 public class Jmethdeps {
-    public static final String VERSION = "0.1.0-beta";
-    
+    public static final String VERSION = "0.1.0";
+
     @Getter @Setter
     private boolean duplicationAllowed;
     @Getter @Setter
     private OutputFormat outputFormat = OutputFormat.TEXT;
-    
+
     public void run(List<File> jarFiles) {
         for (File jarFile : jarFiles) {
             processJar(jarFile);
         }
     }
-    
+
     private void processJar(File jarFile) {
         try {
             JarWalker jarWalker = new JarWalker();
@@ -68,7 +68,7 @@ public class Jmethdeps {
             e.printStackTrace();
         }
     }
-    
+
     private void updateMapForJson(Map<String, List<String>> map, List<Dependency> deps) {
         String cachedSource = null;
         List<String> cachedValue = null;
@@ -89,7 +89,7 @@ public class Jmethdeps {
             value.addAll(dep.getDestinations());
         }
     }
-    
+
     private void printAsJson(Map<String, List<String>> map) throws Exception {
         Map<String, List<String>> finalizedMap;
         if (isDuplicationAllowed()) {
@@ -107,7 +107,7 @@ public class Jmethdeps {
         mapper.disable(JsonGenerator.Feature.AUTO_CLOSE_TARGET);
         mapper.writeValue(System.out, finalizedMap);
     }
-    
+
     private void printAsText(List<Dependency> deps) {
         for (Dependency dep : deps) {
             for (String dest : dep.getDestinations()) {
@@ -115,7 +115,7 @@ public class Jmethdeps {
             }
         }
     }
-    
+
     public enum OutputFormat {
         TEXT,
         JSON,
